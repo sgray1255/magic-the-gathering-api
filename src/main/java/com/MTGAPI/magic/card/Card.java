@@ -1,14 +1,23 @@
 package com.MTGAPI.magic.card;
 
+import java.util.List;
+
 public class Card {
     private Long id;
     private String name;
     private Integer cmc;
+//    Mana Type Reference:
+//    W = White =  (Comes from Plains basic land)
+//    U = Blue =  = (Comes from Island basic land)
+//    B = Black =  = (Comes from Swamp basic land)
+//    R = Red =  = (Comes from Mountain basic land)
+//    G = Green -  = (Comes from Forest basic land)
     private String mana_type;
     private String type_line;
     private String expansion;
     private Integer power;
     private Integer toughness;
+//    private Text text;
 
     public Card() {
     }
@@ -22,6 +31,7 @@ public class Card {
         this.expansion = expansion;
         this.power = power;
         this.toughness = toughness;
+
     }
 
     public Card(String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness) {
@@ -32,6 +42,7 @@ public class Card {
         this.expansion = expansion;
         this.power = power;
         this.toughness = toughness;
+
     }
 
     public Long getId() {
@@ -97,6 +108,14 @@ public class Card {
     public void setToughness(Integer toughness) {
         this.toughness = toughness;
     }
+
+//    public Text getText() {
+//        return text;
+//    }
+//
+//    public void setText(Text text) {
+//        this.text = text;
+//    }
 
     @Override
     public String toString() {
