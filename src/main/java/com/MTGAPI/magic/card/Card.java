@@ -152,7 +152,7 @@ public class Card implements Serializable {
                 ", expansion='" + expansion + '\'' +
                 ", power=" + power +
                 ", toughness=" + toughness +
-                ", text=" + text +
+//                ", text=" + text +
                 '}';
     }
 }
