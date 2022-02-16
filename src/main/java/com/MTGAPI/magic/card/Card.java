@@ -1,10 +1,22 @@
 package com.MTGAPI.magic.card;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
-public class Card {
+@Entity(name = "cards")
+@Table(name = "cards")
+
+public class Card implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
+
+    @Column(name = "name",nullable = false)
     private String name;
+
+    @Column(name="cmc", nullable = false)
     private Integer cmc;
 //    Mana Type Reference:
 //    W = White =  (Comes from Plains basic land)
@@ -12,17 +24,29 @@ public class Card {
 //    B = Black =  = (Comes from Swamp basic land)
 //    R = Red =  = (Comes from Mountain basic land)
 //    G = Green -  = (Comes from Forest basic land)
+    @Column(name = "mana_type", nullable = false)
     private String mana_type;
+
+    @Column(name = "type_line", nullable = false)
     private String type_line;
+
+    @Column(name = "expansion", nullable = false)
     private String expansion;
+
+    @Column(name = "power", nullable = false)
     private Integer power;
+
+    @Column(name = "toughness", nullable = false)
     private Integer toughness;
-//    private Text text;
+
+    @OneToOne
+    @JoinColumn(name = "text_id", referencedColumnName = "id")
+    private Text text;
 
     public Card() {
     }
 
-    public Card(Long id, String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness) {
+    public Card(Long id, String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness, Text text) {
         this.id = id;
         this.name = name;
         this.cmc = cmc;
@@ -31,10 +55,10 @@ public class Card {
         this.expansion = expansion;
         this.power = power;
         this.toughness = toughness;
-
+        this.text = text;
     }
 
-    public Card(String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness) {
+    public Card(String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness, Text text) {
         this.name = name;
         this.cmc = cmc;
         this.mana_type = mana_type;
@@ -42,7 +66,7 @@ public class Card {
         this.expansion = expansion;
         this.power = power;
         this.toughness = toughness;
-
+        this.text = text;
     }
 
     public Long getId() {
@@ -109,13 +133,13 @@ public class Card {
         this.toughness = toughness;
     }
 
-//    public Text getText() {
-//        return text;
-//    }
-//
-//    public void setText(Text text) {
-//        this.text = text;
-//    }
+    public Text getText() {
+        return text;
+    }
+
+    public void setText(Text text) {
+        this.text = text;
+    }
 
     @Override
     public String toString() {
@@ -128,6 +152,7 @@ public class Card {
                 ", expansion='" + expansion + '\'' +
                 ", power=" + power +
                 ", toughness=" + toughness +
+                ", text=" + text +
                 '}';
     }
 }
