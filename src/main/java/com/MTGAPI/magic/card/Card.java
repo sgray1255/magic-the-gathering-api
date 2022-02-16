@@ -39,14 +39,14 @@ public class Card implements Serializable {
     @Column(name = "toughness", nullable = false)
     private Integer toughness;
 
-    @OneToOne
-    @JoinColumn(name = "text_id", referencedColumnName = "id")
-    private Text text;
+//    @OneToOne
+//    @JoinColumn(name = "text_id", referencedColumnName = "id")
+//    private Text text;
 
     public Card() {
     }
 
-    public Card(Long id, String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness, Text text) {
+    public Card(Long id, String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness) {
         this.id = id;
         this.name = name;
         this.cmc = cmc;
@@ -55,10 +55,10 @@ public class Card implements Serializable {
         this.expansion = expansion;
         this.power = power;
         this.toughness = toughness;
-        this.text = text;
+//        this.text = text;
     }
 
-    public Card(String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness, Text text) {
+    public Card(String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness) {
         this.name = name;
         this.cmc = cmc;
         this.mana_type = mana_type;
@@ -66,7 +66,7 @@ public class Card implements Serializable {
         this.expansion = expansion;
         this.power = power;
         this.toughness = toughness;
-        this.text = text;
+//        this.text = text;
     }
 
     public Long getId() {
@@ -133,13 +133,13 @@ public class Card implements Serializable {
         this.toughness = toughness;
     }
 
-    public Text getText() {
-        return text;
-    }
-
-    public void setText(Text text) {
-        this.text = text;
-    }
+//    public Text getText() {
+//        return text;
+//    }
+//
+//    public void setText(Text text) {
+//        this.text = text;
+//    }
 
     @Override
     public String toString() {
