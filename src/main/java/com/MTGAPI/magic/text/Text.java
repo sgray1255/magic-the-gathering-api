@@ -1,10 +1,9 @@
-package com.MTGAPI.magic.card;
+package com.MTGAPI.magic.text;
 
-import org.springframework.lang.NonNull;
+import com.MTGAPI.magic.card.Card;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 @Entity(name = "card_text")
 public class Text implements Serializable {
