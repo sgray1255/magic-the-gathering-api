@@ -14,5 +14,5 @@
 - Create a devops pipeline using tooling of your choice, 
  so that whenever a change is merged in master, your application is deployed. 
  
-[Spring Testing](https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html) 
-[Anatomy of a Magic Card] (https://magic.wizards.com/en/articles/archive/magic-academy/anatomy-magic-card-2006-10-21)
+- [Spring Testing](https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html) 
+- [Anatomy of a Magic Card](https://magic.wizards.com/en/articles/archive/magic-academy/anatomy-magic-card-2006-10-21)
