@@ -1,4 +1,4 @@
-# magic-the-gathering-api
+# Magic, The Gathering API
 
 ## Challenge: You have a client with a huge magic the gathering collection The client wants an API to keep track of his collection
 ## MVP
