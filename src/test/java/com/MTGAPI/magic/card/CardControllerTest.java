@@ -87,9 +87,12 @@ class CardControllerIntegrationTest {
                 .perform(MockMvcRequestBuilders.get("/api/cards/1")
                         .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
                         .andReturn();
         verify(cardService).find(1L);
     }
+
+
 
     public static String asJsonString(final Object obj) {
         try {

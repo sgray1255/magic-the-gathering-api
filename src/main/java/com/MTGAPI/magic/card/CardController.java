@@ -7,11 +7,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Validated
 @RestController
@@ -31,20 +29,19 @@ public class CardController {
         return this.cardService.getAllCards();
     }
 
-    @GetMapping(value = "/{query}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<Card> getCardByQuery(@RequestParam String query) {
         return this.cardService.findByQuery(query);
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Card findCard(@PathVariable Long id) throws Exception {
-        Optional<Card> card = Optional.ofNullable(cardService.find(id));
-
-        if (card.isPresent()) {
-            return card.get();
+    public ResponseEntity<Card> findCard(@PathVariable Long id) throws Exception {
+        Card foundCard = cardService.find(id);
+        if(foundCard.getId().equals(null)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<Card>(foundCard, HttpStatus.OK);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
