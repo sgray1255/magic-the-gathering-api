@@ -32,21 +32,31 @@ public class CardService {
         return card.get();
     }
 
+    public List <Card> findByQuery(String query ){
+
+        return this.cardRepository.getQueryMatch(query);
+    }
+
+
     public Card createNewCard(CardCreatePayload data) {
         Card newCard = new Card();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         mapper.map(data, newCard);
-        return this.cardRepository.save(newCard);
+        this.cardRepository.save(newCard);
+        return newCard;
     }
 
     public Card updateCard(Long id, CardUpdatePayload data) {
         var card = this.find(id);
             mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT).setSkipNullEnabled(true);
             mapper.map(data, card);
-            return this.cardRepository.save(card);
+           this.cardRepository.save(card);
+           return card;
     }
 
      public void delete(Long id) {
         this.cardRepository.deleteById(id);
     }
+
+
 }

@@ -1,9 +1,13 @@
 package com.MTGAPI.magic.card;
 
+import com.sun.istack.NotNull;
+
 public class CardCreatePayload {
 
+    @NotNull
     private String name;
 
+    @NotNull
     private Integer cmc;
 
     //    Mana Type Reference:
@@ -12,15 +16,19 @@ public class CardCreatePayload {
 //    B = Black =  = (Comes from Swamp basic land)
 //    R = Red =  = (Comes from Mountain basic land)
 //    G = Green -  = (Comes from Forest basic land)
+    @NotNull
     private String mana_type;
 
-
+    @NotNull
     private String type_line;
 
+    @NotNull
     private String expansion;
 
+    @NotNull
     private Integer power;
 
+    @NotNull
     private Integer toughness;
 
     public String getName() {

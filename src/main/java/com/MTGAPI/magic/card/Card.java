@@ -2,9 +2,8 @@ package com.MTGAPI.magic.card;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
-@Entity(name = "cards")
+@Entity
 @Table(name = "cards")
 
 public class Card implements Serializable {
@@ -18,12 +17,14 @@ public class Card implements Serializable {
 
     @Column(name="cmc", nullable = false)
     private Integer cmc;
+
 //    Mana Type Reference:
 //    W = White =  (Comes from Plains basic land)
 //    U = Blue =  = (Comes from Island basic land)
 //    B = Black =  = (Comes from Swamp basic land)
 //    R = Red =  = (Comes from Mountain basic land)
 //    G = Green -  = (Comes from Forest basic land)
+
     @Column(name = "mana_type", nullable = false)
     private String mana_type;
 
@@ -39,9 +40,6 @@ public class Card implements Serializable {
     @Column(name = "toughness", nullable = false)
     private Integer toughness;
 
-//    @OneToOne
-//    @JoinColumn(name = "text_id", referencedColumnName = "id")
-//    private Text text;
 
     public Card() {
     }
@@ -55,7 +53,6 @@ public class Card implements Serializable {
         this.expansion = expansion;
         this.power = power;
         this.toughness = toughness;
-//        this.text = text;
     }
 
     public Card(String name, Integer cmc, String mana_type, String type_line, String expansion, Integer power, Integer toughness) {
@@ -66,7 +63,6 @@ public class Card implements Serializable {
         this.expansion = expansion;
         this.power = power;
         this.toughness = toughness;
-//        this.text = text;
     }
 
     public Long getId() {
@@ -133,14 +129,6 @@ public class Card implements Serializable {
         this.toughness = toughness;
     }
 
-//    public Text getText() {
-//        return text;
-//    }
-//
-//    public void setText(Text text) {
-//        this.text = text;
-//    }
-
     @Override
     public String toString() {
         return "Card{" +
@@ -152,7 +140,6 @@ public class Card implements Serializable {
                 ", expansion='" + expansion + '\'' +
                 ", power=" + power +
                 ", toughness=" + toughness +
-//                ", text=" + text +
                 '}';
     }
 }
